@@ -1,72 +1,41 @@
 # Ledgerly — Personal Finance Dashboard
 
-> A responsive personal-finance dashboard for tracking income, expenses and spending patterns.
-
-**Live demo:** [https://khare-pratham.github.io/ledgerly/](https://khare-pratham.github.io/ledgerly/)
-
-## Overview
-
-Ledgerly is a browser-based finance-tracking prototype. Users can record income and expenses, categorise transactions, review cash-flow summaries, filter transaction history and export records to CSV.
-
-## Features
-
-- Record income and expense transactions with amount, category and date
-- Calculate total income, expenses, net balance and transaction count
-- Visualise expenses by category
-- Filter transactions by description, category or type
-- Delete transactions and clear local data
-- Export transaction records as CSV
-- Load sample transactions for a quick demonstration
-- Persist records in browser local storage
-
-## Tech stack
-
-`HTML5` · `CSS3` · `Vanilla JavaScript` · `Browser localStorage` · `CSV export`
-
-## How it works
-
-The app is a static, client-side web app. HTML defines the dashboard and transaction form, CSS provides responsive styling, and JavaScript validates input, updates summaries, renders category breakdowns and transaction rows, and persists records in localStorage. No server or database is connected.
+A responsive finance-tracking frontend built with vanilla HTML, CSS and JavaScript.
 
 ## Run locally
+Open `index.html` in a browser, or run `python3 -m http.server 8000` in this folder and visit `http://localhost:8000`.
 
-1. Clone or download this repository.
-2. Open `index.html` in a browser.
+## Features
+- Add income and expense transactions with category and date
+- Summary metrics and spending by category
+- Filter and delete transactions
+- Export transactions to CSV
+- Optional sample data
+- Persists data in browser `localStorage`
 
-If local-file restrictions interfere, run this from the project folder:
+## Limitations / next steps
+- No backend, login, bank integration, encryption layer, or multi-device sync
+- Data is browser-local and can be lost when browser storage is cleared
+- Not financial advice; don't enter sensitive financial information
+- Next: add tests, a database-backed API, user accounts, budget limits, recurring transactions and accessible chart descriptions
+
+## Stack
+HTML, CSS, JavaScript, browser localStorage.
+
+## Run automated tests
+
+The core validation, calculation, date and CSV utilities are covered by Node.js's built-in test runner. Install Node.js 20 or newer, then run from this repository folder:
 
 ```bash
-python3 -m http.server 8000
+node --test tests/ledgerly-core.test.cjs
 ```
 
-Then visit `http://localhost:8000`.
+## Engineering notes
 
-## Test checklist
+- Transaction data is validated before it enters application state.
+- Currency totals are calculated in integer cents to reduce floating-point drift.
+- Dates use local calendar fields rather than converting through UTC.
+- CSV fields are quoted and spreadsheet formula-like text is neutralised.
+- Storage errors are surfaced to the user; unsaved in-memory changes can still be exported before the page closes.
 
-- [ ] Add income and confirm income and balance increase
-- [ ] Add an expense and confirm expenses and balance update
-- [ ] Filter transactions by description or category
-- [ ] Delete a transaction and verify the summary recalculates
-- [ ] Export CSV and verify expected rows
-- [ ] Refresh and verify data persists in the same browser
-
-## Known limitations
-
-- Browser-local storage only; no account system, cloud sync, server or database
-- Data can be lost if browser storage is cleared and is not suitable for sensitive financial records
-- Category totals are all-time totals; monthly budgets and date-range filters are not implemented
-- This is a learning project, not a bank-connected service or financial advice
-
-## Potential improvements
-
-- Add unit tests for calculation and validation logic
-- Add date filters and configurable category budgets
-- Separate UI, domain logic and persistence into modules
-- Add accessibility checks and automated browser tests
-
-## Screenshots
-
-![Ledgerly dashboard](ledgerly-dashboard.png)
-
-## Project status
-
-Portfolio prototype. This README distinguishes implemented features from potential future improvements.
+The tests cover pure core logic. Browser interaction and GitHub Pages deployment still require manual smoke tests.
