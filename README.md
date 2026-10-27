@@ -65,7 +65,7 @@ Then visit `http://localhost:8000`.
 
 ## Screenshots
 
-![Ledgerly dashboard](ledgerly-dashboard.png)(ledgerly-dashboard1.png)
+![Ledgerly dashboard]((ledgerly-dashboard.png)(ledgerly-dashboard1.png))
 
 ## Project status
 
