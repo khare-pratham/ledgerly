@@ -1,5 +1,7 @@
 # Ledgerly — Personal Finance Dashboard
 
+[![Ledgerly Tests](https://github.com/khare-pratham/ledgerly/actions/workflows/ledgerly-tests.yml/badge.svg)](https://github.com/khare-pratham/ledgerly/actions/workflows/ledgerly-tests.yml) [![Live demo](https://img.shields.io/badge/demo-live-147d6f)](https://khare-pratham.github.io/ledgerly/)
+
 A responsive, browser-based personal finance dashboard built with vanilla HTML, CSS and JavaScript.
 
 > **Portfolio demo:** a local-first finance tracker for recording income and expenses, reviewing spending summaries, and exporting transactions.
