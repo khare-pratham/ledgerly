@@ -55,7 +55,7 @@ async function main() {
     const stream = await download.createReadStream();
     let csv = "";
     for await (const chunk of stream) csv += chunk.toString("utf8");
-    assert.match(csv, /description,amount,type,category,date/);
+    assert.match(csv, /"description","amount","type","category","date"/);
     assert.match(csv, /Payday/);
     console.log("PASS: CSV export downloads transaction data");
 
