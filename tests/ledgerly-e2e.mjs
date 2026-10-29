@@ -59,12 +59,8 @@ async function main() {
     assert.match(csv, /Payday/);
     console.log("PASS: CSV export downloads transaction data");
 
-    await page.getByRole("button", { name: "Clear all data" }).click();
     page.once("dialog", (dialog) => dialog.accept());
-    // If the first click triggered a confirmation before the listener, click again only if data remains.
-    if ((await page.locator("#count").textContent()) !== "0") {
-      await page.getByRole("button", { name: "Clear all data" }).click();
-    }
+    await page.getByRole("button", { name: "Clear all data" }).click();
     assert.equal(await page.locator("#count").textContent(), "0");
     console.log("PASS: user can clear local transaction data");
     console.log("\nAll Ledgerly browser checks passed.");
